@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
@@ -26,6 +27,21 @@ public class SolrProxy extends HttpServlet {
 			  System.out.println(String.format(">>>>>>>>>>>>>>>>Using SOLR Index Url : %s",System.getenv("SOLR_INDEX_URL") ));
 	}
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if(req.getParameter("stats")!=null && req.getParameter("stats").equalsIgnoreCase("true")){
+			  CommonsHttpSolrServer server = new CommonsHttpSolrServer( System.getenv("SOLR_INDEX_URL") );
+			  SolrQuery query = new SolrQuery();
+			  query.setQuery( "*:*");
+			  Long start,end;
+			  query.setRows(0);  // don't actually request any data
+			  try {
+				resp.getWriter().println(String.format(	"<h1>Total Number of Documents=%s",
+						  									server.query(query).getResults().getNumFound()));
+			} catch (SolrServerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resp.getWriter().println("Error searching on Solr");
+			}			
+		}
 		String queryParam = req.getParameter("q");
 		try{
 			  CommonsHttpSolrServer server = new CommonsHttpSolrServer( System.getenv("SOLR_INDEX_URL") );
@@ -47,6 +63,7 @@ public class SolrProxy extends HttpServlet {
 			    }
 			    logger.debug("Completed writing to Stream");
 		}catch(Exception ex){
+			ex.printStackTrace();
 			resp.getWriter().println("Error searching on Solr");
 		}
 
