@@ -34,7 +34,7 @@ public class SolrProxy extends HttpServlet {
 			  Long start,end;
 			  query.setRows(0);  // don't actually request any data
 			  try {
-				resp.getWriter().println(String.format(	"<h1>Total Number of Documents=%s",
+				resp.getWriter().println(String.format(		"Searching against %s addresses",
 						  									server.query(query).getResults().getNumFound()));
 			} catch (SolrServerException e) {
 				// TODO Auto-generated catch block

@@ -18,6 +18,7 @@ $().ready(
 		$("#email").autocomplete("search.solr", {
 			selectFirst: false
 		});
+		$('#search_info').load('/search.solr?stats=true');
 	}
 );
 </script>
@@ -31,9 +32,12 @@ $().ready(
 	
 	<form autocomplete="off" id="searchform">
 		<p>
-			<input type="text" id="email" size="500" maxlength="300" length="200"/>
+		<div id="search_info" class="search_info">Searching # addresses</div>
 		</p>
-	</form>
+		<p>
+		  <input type="text" id="email" size="500" maxlength="300" length="200"/>
+	  </p>
+  </form>
 </div>
 </body>
 

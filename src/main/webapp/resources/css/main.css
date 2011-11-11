@@ -6,7 +6,11 @@ ol,ul{list-style:none}
 caption,th{text-align:left}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-style:normal;font-weight:normal}
 q:before,q:after{content:''}
-body{font:13px arial,helvetica,clean,sans-serif;font-size:small;}
+body{
+	font-size:10px;
+	font-family: arial, helvetica, clean, sans-serif;
+	color: #999;
+}
 select,input,textarea{font:99% arial,helvetica,clean,sans-serif}
 pre,code{font:115% monospace;font-size:100%}
 body * {line-height:1.22em}
@@ -79,4 +83,8 @@ input[type=text] { width: 15em; }
 	border-top-style: solid;
 	border-top-width: 1px;
 	box-shadow: rgba(0, 0, 0, 0.0976563) 0px 1px 3px 0px inset, rgba(83, 168, 236, 0.527344) 0px 0px 7px 0px;
+}
+.search_info{
+	font-size:12px;
+	color:#999
 }
