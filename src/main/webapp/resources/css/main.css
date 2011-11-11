@@ -50,7 +50,7 @@ label {
 input[type=text] { width: 15em; }
 
 #banner { padding: 15px; background-color: #06b; color: white; font-size: large; border-bottom: 1px solid #ccc;
-    background: url(..\images\bg.gif) repeat-x; text-align: center }
+    background: url(../images/bg.gif) repeat-x; text-align: center }
 #banner a { color: white; }
 
 #searchform{
