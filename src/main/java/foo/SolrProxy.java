@@ -23,6 +23,7 @@ public class SolrProxy extends HttpServlet {
 	static Logger logger;
 	static{
 		logger = LoggerFactory.getLogger(SolrProxy.class);
+			  System.out.println(String.format(">>>>>>>>>>>>>>>>Using SOLR Index Url : %s",System.getenv("SOLR_INDEX_URL") ));
 	}
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String queryParam = req.getParameter("q");
