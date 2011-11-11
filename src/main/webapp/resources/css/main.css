@@ -87,4 +87,6 @@ input[type=text] { width: 15em; }
 .search_info{
 	font-size:12px;
 	color:#999
+	margin-top:10px;
+	margin-bottom:10px;
 }
