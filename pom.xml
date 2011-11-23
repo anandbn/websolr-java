@@ -43,13 +43,6 @@
                <type>jar</type>
                <scope>compile</scope>
         </dependency>
-        <!--  Force.com Oauth Servlet Filter -->
-		<dependency>
-		    <groupId>com.force.sdk</groupId>
-		    <artifactId>force-oauth</artifactId>
-		    <version>22.0.7-BETA</version>
-		</dependency>
-
     </dependencies>
 
     <build>
