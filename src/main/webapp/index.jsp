@@ -14,10 +14,26 @@ $().ready(
 		function formatResult(row) {
 			return row[0].replace(/(<.+?>)/gi, '');
 		}
+		$('#faceted_search').click(
+			function(){
+				$("#email").setOptions({extraParams:{facet:'true'}});
+			}
+		);
+		$('#text_search').click(
+			function(){
+				$("#email").setOptions({extraParams:{facet:'false'}});
+			}
+		);
 		
-		$("#email").autocomplete("search.solr", {
-			selectFirst: false
-		});
+		$("#email").autocomplete("/search.solr", {selectFirst: false,scroll:false});
+		$("#email").result(
+			function(event, data, formatted) {
+			/*if (data) {
+				alert('data.searchTime='+datasearchTime);
+			}*/
+				alert('results called');
+			}
+		);
 		$('#search_info').load('/search.solr?stats=true');
 	}
 );
@@ -33,6 +49,12 @@ $().ready(
 	<form autocomplete="off" id="searchform">
 		<p>
 		<div id="search_info" class="search_info">Searching # addresses</div>
+		</p>
+		<p align="center">
+		<div class="search_info">
+			<input name="search_type" value="text" type="radio" id="text_search" checked/>&nbsp;&nbsp;Text Search&nbsp;&nbsp;
+            <input name="search_type" value="faceted" id="faceted_search" type="radio"/>&nbsp;&nbsp;Faceted Search
+		</div>
 		</p>
 		<p>
 		  <input type="text" id="email" size="500" maxlength="300" length="200"/>

@@ -18,11 +18,14 @@ import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SolrProxy extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4562420242671959061L;
 	static Logger logger;
 	static{
 		logger = LoggerFactory.getLogger(SolrProxy.class);
@@ -59,14 +62,12 @@ public class SolrProxy extends HttpServlet {
 			  QueryResponse queryResponse = server.query(query);
 			  end = System.currentTimeMillis();
 			  if("true".equalsIgnoreCase(req.getParameter("facet"))){
-				  List<FacetField> facetQry = queryResponse.getFacetFields();
-				  Long total = 0L;
-				  resp.getWriter().println(String.format("Search took %s ms",(end-start)));
+				  //resp.getWriter().println(String.format("Search took %s ms",(end-start)));
 				  for (FacetField.Count entry:queryResponse.getFacetFields().get(0).getValues()) {
 					  if(entry.getName().length()==2){
-						  resp.getWriter().println(String.format("State: %s [%s]",
-								  								 entry.getName(),
-								  								 (entry.getCount()>0?"<b>"+entry.getCount()+" matches found</b>":"0")
+						  resp.getWriter().println(String.format("State: <b>%s</b> [<b>%s</b> matches found]",
+								  								 entry.getName().toUpperCase(),
+								  								 (entry.getCount()>0?entry.getCount():0)
 								  								)
 								  				);
 					  }

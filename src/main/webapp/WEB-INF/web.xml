@@ -10,7 +10,7 @@
     </welcome-file-list>
 	<servlet>
 		<servlet-name>SolrProxy</servlet-name>
-		<servlet-class>foo.SolrProxy</servlet-class>
+		<servlet-class>com.heroku.examples.websolr.SolrProxy</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SolrProxy</servlet-name>
