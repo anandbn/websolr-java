@@ -29,11 +29,11 @@ public class SolrProxy extends HttpServlet {
 	static Logger logger;
 	static{
 		logger = LoggerFactory.getLogger(SolrProxy.class);
-			  System.out.println(String.format(">>>>>>>>>>>>>>>>Using SOLR Index Url : %s",System.getenv("SOLR_INDEX_URL") ));
+			  System.out.println(String.format(">>>>>>>>>>>>>>>>Using SOLR Index Url : %s",System.getenv("WEBSOLR_URL") ));
 	}
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(req.getParameter("stats")!=null && req.getParameter("stats").equalsIgnoreCase("true")){
-			  CommonsHttpSolrServer server = new CommonsHttpSolrServer( System.getenv("SOLR_INDEX_URL") );
+			  CommonsHttpSolrServer server = new CommonsHttpSolrServer( System.getenv("WEBSOLR_URL") );
 			  SolrQuery query = new SolrQuery();
 			  query.setQuery( "*:*");
 			  Long start,end;
@@ -49,7 +49,7 @@ public class SolrProxy extends HttpServlet {
 		}else{
 			String queryParam = req.getParameter("q");
 			try{
-			  CommonsHttpSolrServer server = new CommonsHttpSolrServer( System.getenv("SOLR_INDEX_URL") );
+			  CommonsHttpSolrServer server = new CommonsHttpSolrServer( System.getenv("WEBSOLR_URL") );
 			  SolrQuery query = new SolrQuery();
 			  query.setQuery( "text:"+queryParam );
 			  query.set("wt", "json");
