@@ -26,14 +26,6 @@ $().ready(
 		);
 		
 		$("#email").autocomplete("/search.solr", {selectFirst: false,scroll:false});
-		$("#email").result(
-			function(event, data, formatted) {
-			/*if (data) {
-				alert('data.searchTime='+datasearchTime);
-			}*/
-				alert('results called');
-			}
-		);
 		$('#search_info').load('/search.solr?stats=true');
 	}
 );
