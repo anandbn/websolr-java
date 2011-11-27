@@ -2,7 +2,7 @@
 
 This is a sample project that demonstrates how to use  [WebSolr add on](http://addons.heroku.com/websolr) with Java on Heroku. [WebSolr](http://websolr.com/) is essentially a hosted version of [Apache Solr](http://lucene.apache.org/solr/) which is a really fast and flexible search and indexing platform that can search/index any data. This project also uses the [JQuery Autocomplete](http://docs.jquery.com/Plugins/Autocomplete) plugin and [SolrJ](http://wiki.apache.org/solr/Solrj), a Java API to communicate with any Solr instance.
 
-Note: This project is by no means a demonstration of all of Solr's capabilties. Please refer to the Solr wiki for more information on additional features and functionality that you can leverage with Solr. 
+__*Note*__: This project is by no means a demonstration of all of Solr's capabilties. Please refer to the Solr wiki for more information on additional features and functionality that you can leverage with Solr. 
 
 ## Pre-requisites
 
@@ -20,9 +20,10 @@ Most of the magic happens in two main components:
 ## Provisioning WebSolr
 
 You can provision the WebSolr add-on to your Heroku app by using the command:
+    
     $ heroku addons:add websolr:cobalt
 
-Note: WebSolr is not a free add-on. If you provision their "cobalt" add-on you will be charged $20 per month. 
+__*Note*__: WebSolr is not a free add-on. If you provision their "cobalt" add-on you will be charged $20 per month. 
 
 Once you provision this add-on, WebSolr will create a "default" index and add the WebSolr index URL to your Heroku config. To view the WebSolr index URL use the command:
 
