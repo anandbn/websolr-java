@@ -19,6 +19,7 @@ Most of the magic happens in two main components:
 
 ## Provisioning WebSolr
 
+You can provision the WebSolr add-on to your Heroku app by using the command:
     $ heroku addons:add websolr:cobalt
 
 Note: WebSolr is not a free add-on. If you provision their "cobalt" add-on you will be charged $20 per month. 
